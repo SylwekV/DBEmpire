@@ -38,7 +38,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="linq2db">
+      <HintPath>..\packages\linq2db.1.0.7.3\lib\net45\linq2db.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -84,15 +96,35 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="LinqToDB.Templates\CopyMe.MySql.tt.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Backend\DB.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DB.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="LinqToDB.Templates\Validation.ttinclude" />
+    <Content Include="LinqToDB.Templates\T4Model.ttinclude" />
+    <Content Include="LinqToDB.Templates\ReadMe.LinqToDB.md" />
+    <Content Include="LinqToDB.Templates\PluralizationService.ttinclude" />
+    <Content Include="LinqToDB.Templates\NotifyPropertyChanged.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.Tools.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.Sybase.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.SqlServer.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.SqlServer.SqlTypes.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.SQLite.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.SqlCe.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.PostgreSQL.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.Oracle.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.MySql.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.Informix.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.Firebird.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.DB2.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.Access.ttinclude" />
+    <Content Include="LinqToDB.Templates\EditableObject.ttinclude" />
+    <Content Include="LinqToDB.Templates\DataModel.ttinclude" />
+    <Content Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
+    <Content Include="LinqToDB.Templates\LinqToDB.MySql.Tools.ttinclude" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -102,13 +134,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Backend\DB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.dbml</DependentUpon>
-    </Compile>
+    <Compile Include="Backend\MySqlProvider.cs" />
+    <Compile Include="Backend\User\UserDB.cs" />
     <Compile Include="Backend\User\UserService.cs" />
     <Compile Include="Business\Abstract\Units\BaseUnit.cs" />
+    <Compile Include="Business\Classes\Login\LoginResult.cs" />
     <Compile Include="Business\Classes\Planet\Planet.cs" />
     <Compile Include="Business\Classes\Units\Army.cs" />
     <Compile Include="Business\Classes\Units\Heroes.cs" />
@@ -120,6 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Home\IndexModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +164,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutNotLogged.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -146,11 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Backend\DB.dbml.layout">
-      <DependentUpon>DB.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

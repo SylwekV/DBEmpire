@@ -1,7 +1,18 @@
-﻿
+﻿@using DBEmpire.Controllers
+@using DBEmpire.Models.Home
+@model IndexModel
 @{
     ViewBag.Title = "Index";
+    
 }
 
 <h2>Index</h2>
+
+
+@if (Model != null && !string.IsNullOrWhiteSpace(Model.UserName))
+{
+    <div>
+        Witaj @Model.UserName
+    </div>
+}
 

@@ -12,13 +12,10 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("DB Empire", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                @Html.ActionLink(HttpContext.Current.Session["UserName"].ToString(), "Index", "Home", new {area = ""}, new {@class = "navbar-brand", @style = "margin-left: 500px"})
             </div>
+           
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>
@@ -26,13 +23,17 @@
         </div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - DB Empire</p>
-        </footer>
-    </div>
+    <div class="container body-content">    
+            @RenderBody()
+        <div>
+            <div class="navbar navbar-fixed-bottom">
+                <hr/>
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - DB Empire</p>
+                </footer>
+            </div>
+       </div>
+</div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DBEmpire.Backend;
+using DBEmpire.Business.Classes.Login;
 using DBEmpire.Models.Login;
 
 namespace DBEmpire.Controllers
@@ -25,9 +26,26 @@ namespace DBEmpire.Controllers
         [HttpPost]
         public ActionResult Index(LoginModel model)
         {
-            var result = UserService.GetUser(model.UserName);
+            var loginResult = UserProvider.LogIn(model.UserName, model.Password);
 
-            return RedirectToAction(HomeController.ActionIndex, HomeController.Name, new {name = result.UserName});
+            if (loginResult.Response == LoginResponse.Success)
+            {
+                if (HttpContext.Session != null)
+                {
+                    HttpContext.Session["UserName"] = loginResult.User.UserName;
+                    HttpContext.Session["UserID"] = loginResult.User.UserID;
+
+                    HttpContext.Session["UserLoggedIn"] = true;
+                }
+
+                return RedirectToAction(HomeController.ActionIndex, HomeController.Name);
+            }
+            else
+            {
+                return View();
+            }
+
+            
         }
 
     }

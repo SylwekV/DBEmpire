@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DBEmpire.Backend;
+using DBEmpire.Models.Home;
 
 namespace DBEmpire.Controllers
 {
@@ -12,9 +14,20 @@ namespace DBEmpire.Controllers
         public static string ActionIndex = "Index";
 
         [HttpGet]
-        public ActionResult Index(string name = "")
+        public ActionResult Index()
         {
-            return View(name);
+            IndexModel model = new IndexModel();
+
+            if (HttpContext.Session != null && (bool?)HttpContext.Session["UserLoggedIn"] == true)
+            {
+                model.UserName = HttpContext.Session["UserName"].ToString();
+            }
+            else
+            {
+                return RedirectToAction(LoginController.ActionIndex, LoginController.Name);
+            }
+
+            return View(model);
         }
     }
 }

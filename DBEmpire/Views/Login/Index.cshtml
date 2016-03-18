@@ -4,14 +4,29 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNotLogged.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Zaloguj się</h2>
+<div style="height: 100%">
+    @using (Html.BeginForm(LoginController.ActionIndex, LoginController.Name))
+    {
+        <div>
+            @Html.LabelFor(m => m.UserName) <br />
+            @Html.TextBoxFor(m => m.UserName) <br />
+            @Html.LabelFor(m => m.Password) <br />
+            @Html.TextBoxFor(m => m.Password) <br />
+        </div>
 
-@using (Html.BeginForm(LoginController.ActionIndex, LoginController.Name))
-{
-    @Html.TextAreaFor(m => m.UserName); <br/>
-    @Html.TextAreaFor(m => m.Password);<br />
-    <button type="submit"></button><br />
-}
+        <br />
 
+        <button class="btn btn-primary" type="submit" style="height: 30px; width: 150px">Zaloguj</button><br />
+
+        <br />
+        <br />
+        <div>Nie masz konta ?</div>
+        <button class="btn btn-info" type="submit" style="height: 30px; width: 150px">Zarejestruj się</button><br/>
+        <br/>
+        <br/>
+    }
+</div>
