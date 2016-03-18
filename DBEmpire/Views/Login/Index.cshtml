@@ -1,0 +1,17 @@
+﻿@using DBEmpire.Controllers
+@using DBEmpire.Models.Login
+@model LoginModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm(LoginController.ActionIndex, LoginController.Name))
+{
+    @Html.TextAreaFor(m => m.UserName); <br/>
+    @Html.TextAreaFor(m => m.Password);<br />
+    <button type="submit"></button><br />
+}
+

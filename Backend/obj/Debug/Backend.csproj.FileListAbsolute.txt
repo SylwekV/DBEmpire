@@ -1,0 +1,5 @@
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Backend\bin\Debug\Backend.dll
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Backend\bin\Debug\Backend.pdb
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Backend\obj\Debug\Backend.dll
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Backend\obj\Debug\Backend.pdb
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Backend\bin\Debug\Backend.dll.config

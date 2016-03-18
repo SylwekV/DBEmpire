@@ -1,0 +1,4 @@
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Business\bin\Debug\Business.dll
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Business\bin\Debug\Business.pdb
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Business\obj\Debug\Business.dll
+c:\Users\sylwester.guz\documents\visual studio 2013\Projects\DBEmpire\Business\obj\Debug\Business.pdb
